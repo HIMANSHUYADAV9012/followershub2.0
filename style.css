@@ -1,0 +1,312 @@
+:root {
+    --ig1: #feda75;
+    --ig2: #d62976;
+    --ig3: #4f5bd5;
+    --glass-bg: rgba(255, 255, 255, 0.08);
+    --primary: #8a3ab9;
+    --secondary: #4c68d7;
+    --accent: #fbad50;
+    --dark: #121212;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, var(--dark) 0%, #574590 100%);
+    color: #fff;
+    overflow-x: hidden;
+}
+
+/* Premium Navbar */
+.navbar {
+    background: rgba(18, 18, 18, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Premium gradient border utility */
+.gradient-border {
+    position: relative;
+    background: rgba(18, 18, 18, 0.7);
+    border-radius: 16px;
+}
+
+.gradient-border::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 16px;
+    padding: 2px;
+    background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    z-index: -1;
+}
+
+/* Card entrance animations */
+@keyframes floatIn {
+    0% {
+        opacity: 0;
+        transform: translateY(24px) scale(0.98);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.animate-floatIn {
+    animation: floatIn 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Premium hover effect */
+.premium-hover {
+    transition: all 0.3s ease;
+}
+
+.premium-hover:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
+}
+
+/* Glass effect */
+.glass {
+    background: var(--glass-bg);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Modal animation */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fadeUp {
+    animation: fadeUp 0.35s ease-out both;
+}
+
+/* Pulse effect for CTA */
+.ring-pulse {
+    box-shadow: 0 0 0 0 rgba(138, 58, 185, 0.7);
+    animation: ringPulse 2s infinite;
+}
+
+@keyframes ringPulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(138, 58, 185, 0.7);
+    }
+
+    70% {
+        box-shadow: 0 0 0 14px rgba(138, 58, 185, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(138, 58, 185, 0);
+    }
+}
+
+/* Loading spinner */
+.spinner {
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top: 3px solid #fff;
+    width: 20px;
+    height: 20px;
+    animation: spin 1s linear infinite;
+    display: inline-block;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary);
+    border-radius: 4px;
+}
+
+/* Shine effect on cards */
+.shine-effect {
+    position: relative;
+    overflow: hidden;
+}
+
+.shine-effect::after {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(to bottom right,
+            rgba(255, 255, 255, 0) 0%,
+            rgba(255, 255, 255, 0) 40%,
+            rgba(255, 255, 255, 0.1) 50%,
+            rgba(255, 255, 255, 0) 60%,
+            rgba(255, 255, 255, 0) 100%);
+    transform: rotate(30deg);
+    animation: shine 5s infinite linear;
+    opacity: 0;
+}
+
+@keyframes shine {
+    0% {
+        opacity: 0;
+        transform: translateX(-100%) translateY(-100%) rotate(30deg);
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    40% {
+        opacity: 0;
+        transform: translateX(100%) translateY(100%) rotate(30deg);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateX(100%) translateY(100%) rotate(30deg);
+    }
+}
+
+/* Error animation */
+@keyframes shake {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    10%,
+    30%,
+    50%,
+    70%,
+    90% {
+        transform: translateX(-5px);
+    }
+
+    20%,
+    40%,
+    60%,
+    80% {
+        transform: translateX(5px);
+    }
+}
+
+.shake {
+    animation: shake 0.5s;
+}
+
+/* Success checkmark */
+@keyframes checkmark {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+
+    50% {
+        transform: scale(1.2);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.checkmark {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #10B981;
+    color: white;
+    text-align: center;
+    line-height: 20px;
+    font-size: 14px;
+    animation: checkmark 0.5s ease-in-out;
+}
+
+.popup {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background: #007BFF;
+    /* Blue */
+    color: white;
+    padding: 14px 22px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    transform: translateY(100%);
+    /* नीचे से आएगा */
+    transition: all 0.6s ease;
+    pointer-events: none;
+    z-index: 9999;
+    /* ऊपर दिखे */
+}
+
+.popup.show {
+    opacity: 1;
+    transform: translateY(0);
+    /* ऊपर उठेगा */
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.bounce {
+    transition: transform 0.4s ease;
+}
+
+a img,
+button img {
+    height: 24px;
+    width: auto;
+}
+
+
+
+
+#userInfoBar {
+  background: linear-gradient(135deg, rgba(131,58,180,0.4), rgba(253,29,29,0.2), rgba(252,176,69,0.2));
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+#userProfilePic {
+  border-width: 2px;
+  border-image: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888) 1;
+}
