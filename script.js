@@ -545,7 +545,7 @@ function showPostSelectionModal(pkg) {
                 (post, index) => `
               <div class="relative group cursor-pointer post-item border border-gray-600 rounded-lg transition-all" 
                    onclick="selectPost(${index})">
-                <img src="http://127.0.0.1:8000/proxy-image/?url=${encodeURIComponent(
+                <img src="https://followershub2.onrender.com/proxy-image/?url=${encodeURIComponent(
                   post.thumbnail
                 )}" 
                      alt="Post ${index + 1}" 
@@ -1559,4 +1559,5 @@ function warnBeforeClose() {
 // Expose functions to global scope
 window.selectPost = selectPost;
 window.closePostSelection = closePostSelection;
+
 window.proceedWithSelectedPost = proceedWithSelectedPost;
